@@ -1,0 +1,111 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String  @id @default(uuid()) @db.Uuid
+  address        String  @unique @db.Char(40) // The address of the user without 0x
+  name           String
+  avatar         String?
+  bio            String?
+  email          String?
+  additionalInfo String?
+
+  Book Book[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Book {
+  id      String    @id @default(uuid()) @db.Uuid
+  slug    String    @unique
+  Tag     Tag[]
+  Content Content[]
+
+  equaity      String? // A JSON describes the book's equaity
+  tokenAddress String? @unique @db.Char(40) // The address of the equaity token without 0x
+
+  author   User   @relation(fields: [authorId], references: [id])
+  authorId String @db.Uuid
+
+  ChildBooks Book[]    @relation("NestedBooks")
+  Chapter    Chapter[]
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  ParentBook   Book?    @relation("NestedBooks", fields: [parentBookId], references: [id])
+  parentBookId String?  @db.Uuid
+}
+
+model Chapter {
+  id   String @id @default(uuid()) @db.Uuid
+  slug String
+
+  Content Content[]
+
+  book      Book     @relation(fields: [bookId], references: [id])
+  bookId    String   @db.Uuid
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([bookId, slug])
+}
+
+model Content {
+  id       String @id @default(uuid()) @db.Uuid
+  language String // IANA language code
+
+  title       String
+  description String
+  content     String
+  cover       String?
+  banner      String?
+
+  Chapter   Chapter? @relation(fields: [chapterId], references: [id])
+  chapterId String?  @db.Uuid
+  Book      Book?    @relation(fields: [bookId], references: [id])
+  bookId    String?  @db.Uuid
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([chapterId, language])
+  @@unique([bookId, language])
+}
+
+model Tag {
+  id       String  @id @default(uuid()) @db.Uuid
+  slug     String  @unique
+  language String // IANA language code
+  banner   String?
+  Book     Book[]
+
+  AliasTag Tag[] @relation("CanonicalTag")
+
+  CanonicalTag   Tag?    @relation("CanonicalTag", fields: [canonicalTagId], references: [id])
+  canonicalTagId String? @db.Uuid
+
+  createdAt DateTime @default(now())
+}
+
+model Investment {
+  id     String  @id @default(uuid()) @db.Uuid
+  amount Decimal @db.Decimal(9, 2) // in USD, it can store up to 9,999,999.99 and it should be enough for a book
+  equity Int
+  hash   String  @unique @db.Char(64) // The hash of the transaction without 0x
+
+  createdAt DateTime @default(now())
+}
