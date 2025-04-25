@@ -1,20 +1,11 @@
 // context/index.tsx
 "use client";
 
-import { wagmiAdapter, projectId } from "@/config/reown";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { projectId, wagmiAdapter } from "@/config/reown";
+import { soneium, soneiumMinato } from "@reown/appkit/networks";
 import { createAppKit } from "@reown/appkit/react";
-import {
-  mainnet,
-  arbitrum,
-  avalanche,
-  base,
-  optimism,
-  polygon,
-  soneiumMinato,
-  soneium,
-} from "@reown/appkit/networks";
-import React, { type ReactNode } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { type ReactNode } from "react";
 import { cookieToInitialState, WagmiProvider, type Config } from "wagmi";
 
 // Set up queryClient
@@ -27,8 +18,8 @@ if (!projectId) {
 // Set up metadata
 const metadata = {
   name: "Unbound",
-  description: "AppKit Example",
-  url: "https://reown.com/appkit", // origin must match your domain & subdomain
+  description: "Release Your Creation to the World",
+  url: "https://unbound.lmi.icu", // origin must match your domain & subdomain
   icons: ["https://assets.reown.com/reown-profile-pic.png"],
 };
 

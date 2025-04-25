@@ -17,6 +17,18 @@ export const wagmiAdapter = new WagmiAdapter({
   ssr: true,
   projectId,
   networks,
+  customRpcUrls: {
+    [`eip155:${soneium.id}`]: [
+      {
+        url: "https://soneium.rpc.scs.startale.com?apikey=uMWv5SZNDrJMwJF1pQNcS7dbPSbzEs5v",
+      },
+    ],
+    [`eip155:${soneiumMinato.id}`]: [
+      {
+        url: "https://soneium-minato.rpc.scs.startale.com?apikey=O5oSQ9fCalLpzYugMa6170uSNOy9DeH9",
+      },
+    ],
+  },
 });
 
 export const config = wagmiAdapter.wagmiConfig;
