@@ -24,6 +24,7 @@ const metadata = {
   icons: ["https://assets.reown.com/reown-profile-pic.png"],
 };
 
+export const siwx = new DefaultSIWX();
 // Create the modal
 createAppKit({
   adapters: [wagmiAdapter],
@@ -34,7 +35,7 @@ createAppKit({
   features: {
     analytics: true, // Optional - defaults to your Cloud configuration
   },
-  siwx: new DefaultSIWX(),
+  siwx,
 });
 
 function ContextProvider({
