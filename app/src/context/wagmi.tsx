@@ -2,6 +2,7 @@
 "use client";
 
 import { projectId, wagmiAdapter } from "@/config/reown";
+import { DefaultSIWX } from "@reown/appkit-siwx";
 import { soneium, soneiumMinato } from "@reown/appkit/networks";
 import { createAppKit } from "@reown/appkit/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -33,6 +34,7 @@ const modal = createAppKit({
   features: {
     analytics: true, // Optional - defaults to your Cloud configuration
   },
+  siwx: new DefaultSIWX(),
 });
 
 function ContextProvider({
