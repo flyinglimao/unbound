@@ -39,7 +39,7 @@ export function Nav() {
               <FaSearch />
             </button>
           </Form>
-          <MyPage />
+          <MyPage className="text-sm" />
           <appkit-button label="Log in" balance="hide" />
         </div>
         <div className="flex lg:hidden">
@@ -52,7 +52,7 @@ export function Nav() {
             <BsThreeDotsVertical />
           </label>
           <input type="checkbox" id="top-nav-toggle" className="hidden peer" />
-          <div className="absolute top-[4.5rem] right-0 bg-gray-600 w-full h-screen flex-col gap-4 p-4 hidden peer-checked:flex">
+          <div className="absolute top-[4.5rem] right-0 bg-gray-600 w-full min-h-screen flex-col gap-4 p-4 hidden peer-checked:flex">
             <Form
               className="flex items-center rounded-full bg-gray-400"
               action="/books"
@@ -73,6 +73,10 @@ export function Nav() {
             <MyPage />
             <Link href="/books">Books</Link>
             <Link href="/about">About</Link>
+            <div
+              className="flex flex-col gap-4 has-[*]:border-t-2 border-gray-800 py-4"
+              id="subnav"
+            ></div>
           </div>
         </div>
       </nav>

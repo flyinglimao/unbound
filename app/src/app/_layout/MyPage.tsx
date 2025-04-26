@@ -3,10 +3,14 @@
 import { useAppKitAccount } from "@reown/appkit/react";
 import Link from "next/link";
 
-export function MyPage() {
+export function MyPage({ className }: { className?: string }) {
   const { isConnected } = useAppKitAccount();
-  console.log(isConnected);
+
   if (!isConnected) return null;
 
-  return <Link href="/profile">My Page</Link>;
+  return (
+    <Link href="/profile" className={className}>
+      My Page
+    </Link>
+  );
 }
