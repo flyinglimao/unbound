@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { MyPage } from "./MyPage";
-import { FaSearch } from "react-icons/fa";
 import Form from "next/form";
-import { BsThreeDotsVertical } from "react-icons/bs";
+import { BsThreeDotsVertical, BsSearch } from "react-icons/bs";
 
 export function Nav() {
   return (
@@ -36,7 +35,7 @@ export function Nav() {
               className="rounded-full size-8 bg-gray-400 grid place-items-center"
               type="submit"
             >
-              <FaSearch />
+              <BsSearch />
             </button>
           </Form>
           <MyPage className="text-sm" />
@@ -67,7 +66,7 @@ export function Nav() {
                 className="rounded-full size-8 bg-gray-400 grid place-items-center"
                 type="submit"
               >
-                <FaSearch />
+                <BsSearch />
               </button>
             </Form>
             <MyPage />

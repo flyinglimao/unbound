@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ReactNode, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
 // childrens should be many block with h/w in 2:7
 
@@ -119,7 +119,7 @@ export function Carousel({ items: items_ }: { items: CarouselItem[] }) {
           left: leftSpace + 8,
         }}
       >
-        <FaChevronLeft />
+        <BsChevronLeft />
       </button>
       <button
         className="absolute top-1/2 z-50 -translate-y-1/2"
@@ -129,7 +129,7 @@ export function Carousel({ items: items_ }: { items: CarouselItem[] }) {
           right: leftSpace + 8,
         }}
       >
-        <FaChevronRight />
+        <BsChevronRight />
       </button>
       {items
         .map((item, index) => getItemWithPosition_(item, index, centerIndex))
