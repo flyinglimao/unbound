@@ -110,7 +110,7 @@ export function Carousel({ items: items_ }: { items: CarouselItem[] }) {
       ref={ref}
     >
       <button
-        className="absolute top-1/2 z-50 -translate-y-1/2"
+        className="absolute top-1/2 z-30 -translate-y-1/2"
         role="button"
         onClick={() =>
           setCenterIndex((prev) => (prev - 1 + items.length) % items.length)
@@ -122,7 +122,7 @@ export function Carousel({ items: items_ }: { items: CarouselItem[] }) {
         <BsChevronLeft />
       </button>
       <button
-        className="absolute top-1/2 z-50 -translate-y-1/2"
+        className="absolute top-1/2 z-30 -translate-y-1/2"
         role="button"
         onClick={() => setCenterIndex((prev) => (prev + 1) % items.length)}
         style={{

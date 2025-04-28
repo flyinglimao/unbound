@@ -5,7 +5,7 @@ import { BsThreeDotsVertical, BsSearch } from "react-icons/bs";
 
 export function Nav() {
   return (
-    <div className="bg-gray-800 px-4 top-0 w-full lg:sticky">
+    <div className="bg-gray-800 px-4 top-0 w-full lg:sticky z-40">
       <nav className="flex items-center justify-between max-w-7xl m-auto text-white top-0 w-full h-[4.5rem]">
         <div className="flex items-center gap-8">
           <Link href="/" className="text-lg font-bold">
