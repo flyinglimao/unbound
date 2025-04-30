@@ -1,16 +1,18 @@
-import { ReactNode } from "react";
+"use client";
+
+import { ReactNode, useMemo } from "react";
 import { createPortal } from "react-dom";
 
 export function Subnav({ children }: { children: ReactNode }) {
-  const subnav = document.getElementById("subnav");
-  if (!subnav) {
-    throw new Error("Subnav element not found");
-  }
+  const subnav =
+    typeof window === "undefined"
+      ? null
+      : window.document.getElementById("subnav");
 
   return (
     <>
       {children}
-      {createPortal(children, subnav)}
+      {subnav ? createPortal(children, subnav) : null}
     </>
   );
 }

@@ -28,7 +28,7 @@ export default async function RootLayout({
   const cookies = (await headers()).get("cookie");
 
   return (
-    <html>
+    <html className="lg:scroll-p-20 scroll-p-2">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
