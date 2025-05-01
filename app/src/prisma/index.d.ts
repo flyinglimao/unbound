@@ -3849,13 +3849,24 @@ export namespace Prisma {
 
   export type AggregateChapter = {
     _count: ChapterCountAggregateOutputType | null
+    _avg: ChapterAvgAggregateOutputType | null
+    _sum: ChapterSumAggregateOutputType | null
     _min: ChapterMinAggregateOutputType | null
     _max: ChapterMaxAggregateOutputType | null
+  }
+
+  export type ChapterAvgAggregateOutputType = {
+    price: Decimal | null
+  }
+
+  export type ChapterSumAggregateOutputType = {
+    price: Decimal | null
   }
 
   export type ChapterMinAggregateOutputType = {
     id: string | null
     slug: string | null
+    price: Decimal | null
     bookId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -3864,6 +3875,7 @@ export namespace Prisma {
   export type ChapterMaxAggregateOutputType = {
     id: string | null
     slug: string | null
+    price: Decimal | null
     bookId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -3872,6 +3884,7 @@ export namespace Prisma {
   export type ChapterCountAggregateOutputType = {
     id: number
     slug: number
+    price: number
     bookId: number
     createdAt: number
     updatedAt: number
@@ -3879,9 +3892,18 @@ export namespace Prisma {
   }
 
 
+  export type ChapterAvgAggregateInputType = {
+    price?: true
+  }
+
+  export type ChapterSumAggregateInputType = {
+    price?: true
+  }
+
   export type ChapterMinAggregateInputType = {
     id?: true
     slug?: true
+    price?: true
     bookId?: true
     createdAt?: true
     updatedAt?: true
@@ -3890,6 +3912,7 @@ export namespace Prisma {
   export type ChapterMaxAggregateInputType = {
     id?: true
     slug?: true
+    price?: true
     bookId?: true
     createdAt?: true
     updatedAt?: true
@@ -3898,6 +3921,7 @@ export namespace Prisma {
   export type ChapterCountAggregateInputType = {
     id?: true
     slug?: true
+    price?: true
     bookId?: true
     createdAt?: true
     updatedAt?: true
@@ -3942,6 +3966,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: ChapterAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ChapterSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: ChapterMinAggregateInputType
@@ -3972,6 +4008,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ChapterCountAggregateInputType | true
+    _avg?: ChapterAvgAggregateInputType
+    _sum?: ChapterSumAggregateInputType
     _min?: ChapterMinAggregateInputType
     _max?: ChapterMaxAggregateInputType
   }
@@ -3979,10 +4017,13 @@ export namespace Prisma {
   export type ChapterGroupByOutputType = {
     id: string
     slug: string
+    price: Decimal
     bookId: string
     createdAt: Date
     updatedAt: Date
     _count: ChapterCountAggregateOutputType | null
+    _avg: ChapterAvgAggregateOutputType | null
+    _sum: ChapterSumAggregateOutputType | null
     _min: ChapterMinAggregateOutputType | null
     _max: ChapterMaxAggregateOutputType | null
   }
@@ -4004,6 +4045,7 @@ export namespace Prisma {
   export type ChapterSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     slug?: boolean
+    price?: boolean
     bookId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4015,6 +4057,7 @@ export namespace Prisma {
   export type ChapterSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     slug?: boolean
+    price?: boolean
     bookId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4024,6 +4067,7 @@ export namespace Prisma {
   export type ChapterSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     slug?: boolean
+    price?: boolean
     bookId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4033,12 +4077,13 @@ export namespace Prisma {
   export type ChapterSelectScalar = {
     id?: boolean
     slug?: boolean
+    price?: boolean
     bookId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ChapterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "bookId" | "createdAt" | "updatedAt", ExtArgs["result"]["chapter"]>
+  export type ChapterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "price" | "bookId" | "createdAt" | "updatedAt", ExtArgs["result"]["chapter"]>
   export type ChapterInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Content?: boolean | Chapter$ContentArgs<ExtArgs>
     book?: boolean | BookDefaultArgs<ExtArgs>
@@ -4060,6 +4105,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       slug: string
+      price: Prisma.Decimal
       bookId: string
       createdAt: Date
       updatedAt: Date
@@ -4490,6 +4536,7 @@ export namespace Prisma {
   interface ChapterFieldRefs {
     readonly id: FieldRef<"Chapter", 'String'>
     readonly slug: FieldRef<"Chapter", 'String'>
+    readonly price: FieldRef<"Chapter", 'Decimal'>
     readonly bookId: FieldRef<"Chapter", 'String'>
     readonly createdAt: FieldRef<"Chapter", 'DateTime'>
     readonly updatedAt: FieldRef<"Chapter", 'DateTime'>
@@ -8340,6 +8387,7 @@ export namespace Prisma {
   export const ChapterScalarFieldEnum: {
     id: 'id',
     slug: 'slug',
+    price: 'price',
     bookId: 'bookId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -8656,6 +8704,7 @@ export namespace Prisma {
     NOT?: ChapterWhereInput | ChapterWhereInput[]
     id?: UuidFilter<"Chapter"> | string
     slug?: StringFilter<"Chapter"> | string
+    price?: DecimalFilter<"Chapter"> | Decimal | DecimalJsLike | number | string
     bookId?: UuidFilter<"Chapter"> | string
     createdAt?: DateTimeFilter<"Chapter"> | Date | string
     updatedAt?: DateTimeFilter<"Chapter"> | Date | string
@@ -8666,6 +8715,7 @@ export namespace Prisma {
   export type ChapterOrderByWithRelationInput = {
     id?: SortOrder
     slug?: SortOrder
+    price?: SortOrder
     bookId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -8680,6 +8730,7 @@ export namespace Prisma {
     OR?: ChapterWhereInput[]
     NOT?: ChapterWhereInput | ChapterWhereInput[]
     slug?: StringFilter<"Chapter"> | string
+    price?: DecimalFilter<"Chapter"> | Decimal | DecimalJsLike | number | string
     bookId?: UuidFilter<"Chapter"> | string
     createdAt?: DateTimeFilter<"Chapter"> | Date | string
     updatedAt?: DateTimeFilter<"Chapter"> | Date | string
@@ -8690,12 +8741,15 @@ export namespace Prisma {
   export type ChapterOrderByWithAggregationInput = {
     id?: SortOrder
     slug?: SortOrder
+    price?: SortOrder
     bookId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: ChapterCountOrderByAggregateInput
+    _avg?: ChapterAvgOrderByAggregateInput
     _max?: ChapterMaxOrderByAggregateInput
     _min?: ChapterMinOrderByAggregateInput
+    _sum?: ChapterSumOrderByAggregateInput
   }
 
   export type ChapterScalarWhereWithAggregatesInput = {
@@ -8704,6 +8758,7 @@ export namespace Prisma {
     NOT?: ChapterScalarWhereWithAggregatesInput | ChapterScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"Chapter"> | string
     slug?: StringWithAggregatesFilter<"Chapter"> | string
+    price?: DecimalWithAggregatesFilter<"Chapter"> | Decimal | DecimalJsLike | number | string
     bookId?: UuidWithAggregatesFilter<"Chapter"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Chapter"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Chapter"> | Date | string
@@ -9101,6 +9156,7 @@ export namespace Prisma {
   export type ChapterCreateInput = {
     id?: string
     slug: string
+    price: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
     updatedAt?: Date | string
     Content?: ContentCreateNestedManyWithoutChapterInput
@@ -9110,6 +9166,7 @@ export namespace Prisma {
   export type ChapterUncheckedCreateInput = {
     id?: string
     slug: string
+    price: Decimal | DecimalJsLike | number | string
     bookId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -9119,6 +9176,7 @@ export namespace Prisma {
   export type ChapterUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Content?: ContentUpdateManyWithoutChapterNestedInput
@@ -9128,6 +9186,7 @@ export namespace Prisma {
   export type ChapterUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     bookId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9137,6 +9196,7 @@ export namespace Prisma {
   export type ChapterCreateManyInput = {
     id?: string
     slug: string
+    price: Decimal | DecimalJsLike | number | string
     bookId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -9145,6 +9205,7 @@ export namespace Prisma {
   export type ChapterUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -9152,6 +9213,7 @@ export namespace Prisma {
   export type ChapterUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     bookId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9648,6 +9710,17 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type DecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
   export type BookScalarRelationFilter = {
     is?: BookWhereInput
     isNot?: BookWhereInput
@@ -9661,14 +9734,20 @@ export namespace Prisma {
   export type ChapterCountOrderByAggregateInput = {
     id?: SortOrder
     slug?: SortOrder
+    price?: SortOrder
     bookId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
+  export type ChapterAvgOrderByAggregateInput = {
+    price?: SortOrder
+  }
+
   export type ChapterMaxOrderByAggregateInput = {
     id?: SortOrder
     slug?: SortOrder
+    price?: SortOrder
     bookId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -9677,9 +9756,30 @@ export namespace Prisma {
   export type ChapterMinOrderByAggregateInput = {
     id?: SortOrder
     slug?: SortOrder
+    price?: SortOrder
     bookId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type ChapterSumOrderByAggregateInput = {
+    price?: SortOrder
+  }
+
+  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
   }
 
   export type ChapterNullableScalarRelationFilter = {
@@ -9771,17 +9871,6 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
-  export type DecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-  }
-
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -9825,22 +9914,6 @@ export namespace Prisma {
   export type InvestmentSumOrderByAggregateInput = {
     amount?: SortOrder
     equity?: SortOrder
-  }
-
-  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedDecimalFilter<$PrismaModel>
-    _sum?: NestedDecimalFilter<$PrismaModel>
-    _min?: NestedDecimalFilter<$PrismaModel>
-    _max?: NestedDecimalFilter<$PrismaModel>
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -10127,6 +10200,14 @@ export namespace Prisma {
     connect?: ContentWhereUniqueInput | ContentWhereUniqueInput[]
   }
 
+  export type DecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
+  }
+
   export type ContentUpdateManyWithoutChapterNestedInput = {
     create?: XOR<ContentCreateWithoutChapterInput, ContentUncheckedCreateWithoutChapterInput> | ContentCreateWithoutChapterInput[] | ContentUncheckedCreateWithoutChapterInput[]
     connectOrCreate?: ContentCreateOrConnectWithoutChapterInput | ContentCreateOrConnectWithoutChapterInput[]
@@ -10289,14 +10370,6 @@ export namespace Prisma {
     update?: TagUpdateWithWhereUniqueWithoutCanonicalTagInput | TagUpdateWithWhereUniqueWithoutCanonicalTagInput[]
     updateMany?: TagUpdateManyWithWhereWithoutCanonicalTagInput | TagUpdateManyWithWhereWithoutCanonicalTagInput[]
     deleteMany?: TagScalarWhereInput | TagScalarWhereInput[]
-  }
-
-  export type DecimalFieldUpdateOperationsInput = {
-    set?: Decimal | DecimalJsLike | number | string
-    increment?: Decimal | DecimalJsLike | number | string
-    decrement?: Decimal | DecimalJsLike | number | string
-    multiply?: Decimal | DecimalJsLike | number | string
-    divide?: Decimal | DecimalJsLike | number | string
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -10719,6 +10792,7 @@ export namespace Prisma {
   export type ChapterCreateWithoutBookInput = {
     id?: string
     slug: string
+    price: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
     updatedAt?: Date | string
     Content?: ContentCreateNestedManyWithoutChapterInput
@@ -10727,6 +10801,7 @@ export namespace Prisma {
   export type ChapterUncheckedCreateWithoutBookInput = {
     id?: string
     slug: string
+    price: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
     updatedAt?: Date | string
     Content?: ContentUncheckedCreateNestedManyWithoutChapterInput
@@ -10909,6 +10984,7 @@ export namespace Prisma {
     NOT?: ChapterScalarWhereInput | ChapterScalarWhereInput[]
     id?: UuidFilter<"Chapter"> | string
     slug?: StringFilter<"Chapter"> | string
+    price?: DecimalFilter<"Chapter"> | Decimal | DecimalJsLike | number | string
     bookId?: UuidFilter<"Chapter"> | string
     createdAt?: DateTimeFilter<"Chapter"> | Date | string
     updatedAt?: DateTimeFilter<"Chapter"> | Date | string
@@ -11080,6 +11156,7 @@ export namespace Prisma {
   export type ChapterCreateWithoutContentInput = {
     id?: string
     slug: string
+    price: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
     updatedAt?: Date | string
     book: BookCreateNestedOneWithoutChapterInput
@@ -11088,6 +11165,7 @@ export namespace Prisma {
   export type ChapterUncheckedCreateWithoutContentInput = {
     id?: string
     slug: string
+    price: Decimal | DecimalJsLike | number | string
     bookId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -11145,6 +11223,7 @@ export namespace Prisma {
   export type ChapterUpdateWithoutContentInput = {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     book?: BookUpdateOneRequiredWithoutChapterNestedInput
@@ -11153,6 +11232,7 @@ export namespace Prisma {
   export type ChapterUncheckedUpdateWithoutContentInput = {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     bookId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11422,6 +11502,7 @@ export namespace Prisma {
   export type ChapterCreateManyBookInput = {
     id?: string
     slug: string
+    price: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -11535,6 +11616,7 @@ export namespace Prisma {
   export type ChapterUpdateWithoutBookInput = {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Content?: ContentUpdateManyWithoutChapterNestedInput
@@ -11543,6 +11625,7 @@ export namespace Prisma {
   export type ChapterUncheckedUpdateWithoutBookInput = {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     Content?: ContentUncheckedUpdateManyWithoutChapterNestedInput
@@ -11551,6 +11634,7 @@ export namespace Prisma {
   export type ChapterUncheckedUpdateManyWithoutBookInput = {
     id?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

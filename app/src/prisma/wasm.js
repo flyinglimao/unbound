@@ -143,6 +143,7 @@ exports.Prisma.BookScalarFieldEnum = {
 exports.Prisma.ChapterScalarFieldEnum = {
   id: 'id',
   slug: 'slug',
+  price: 'price',
   bookId: 'bookId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

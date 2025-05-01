@@ -51,8 +51,9 @@ model Book {
 }
 
 model Chapter {
-  id   String @id @default(uuid()) @db.Uuid
-  slug String
+  id    String  @id @default(uuid()) @db.Uuid
+  slug  String
+  price Decimal @db.Decimal(9, 2) // in USD, it can store up to 9,999,999.99 and it should be enough for a book
 
   Content Content[]
 
