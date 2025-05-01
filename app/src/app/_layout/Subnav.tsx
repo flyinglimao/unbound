@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useMemo } from "react";
+import { ReactNode } from "react";
 import { createPortal } from "react-dom";
 
 export function Subnav({ children }: { children: ReactNode }) {

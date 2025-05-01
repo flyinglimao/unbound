@@ -1,5 +1,3 @@
-import { Subnav } from "@/app/_layout/Subnav";
-import { EquityChart } from "@/components/EquityChart";
 import Image from "next/image";
 import Link from "next/link";
 import { BsChevronLeft } from "react-icons/bs";

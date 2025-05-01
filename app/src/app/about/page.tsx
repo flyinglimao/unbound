@@ -12,7 +12,7 @@ export default function About() {
           Unleash Creation, Unlimited Possibilities
         </h2>
         <blockquote className="text-xl italic border-l-4 border-gray-800 border-dashed pl-4 py-2 max-w-2xl mx-auto">
-          "Release Your Creation to the World"
+          {'"Release Your Creation to the World"'}
         </blockquote>
       </section>
 
@@ -67,11 +67,10 @@ export default function About() {
       <section className="bg-gray-800 text-white py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold mb-12 text-center">
-            Unbound Protocol's Unique Value
+            {"Unbound Protocol's Unique Value"}
           </h2>
           <p className="text-xl mb-12 text-center">
-            We've built a revolutionary platform on the Soneium blockchain with
-            three core features:
+            {`We've built a revolutionary platform on the Soneium blockchain with three core features:`}
           </p>
 
           <div className="space-y-16">
@@ -105,8 +104,7 @@ export default function About() {
                   2. Tokenized Copyright
                 </h3>
                 <p className="text-lg leading-relaxed mb-4">
-                  Through blockchain technology, we've implemented copyright
-                  tokenization:
+                  {`Through blockchain technology, we've implemented copyright tokenization:`}
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-lg pl-4">
                   <li>
@@ -161,9 +159,9 @@ export default function About() {
           reader can access amazing content from around the world.
         </p>
         <p className="text-xl leading-relaxed">
-          Whether you're a writer, translator, illustrator, investor, or content
+          {`Whether you're a writer, translator, illustrator, investor, or content
           enthusiast, Unbound Protocol offers you the opportunity to participate
-          in the global creative economy.
+          in the global creative economy.`}
         </p>
       </section>
       <section className="py-20 px-4 bg-gray-800">
@@ -287,9 +285,9 @@ export default function About() {
 
           <div className="mt-16 text-center text-white">
             <p className="text-xl">
-              Our roadmap is designed to progressively expand Unbound Protocol's
+              {`Our roadmap is designed to progressively expand Unbound Protocol's
               capabilities while ensuring a robust and user-friendly ecosystem
-              for creators worldwide.
+              for creators worldwide.`}
             </p>
             {/* <a
               href="#"

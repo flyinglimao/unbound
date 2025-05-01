@@ -1,36 +1,9 @@
 "use client";
 
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { ArcElement, Chart as ChartJS, Legend, Tooltip } from "chart.js";
 import { Pie } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-
-const data = {
-  labels: ["Unbound", "Author", "Translator", "Public Offering"],
-  datasets: [
-    {
-      label: "% of Equities",
-      data: [10, 60, 10, 20],
-      backgroundColor: [
-        "hsla(0,100%,69%, 0.2)",
-        "hsla(240,100%,69%, 0.2)",
-        "hsla(120,100%,69%, 0.2)",
-        "hsla(300,100%,69%, 0.2)",
-        "hsla(60,100%,69%, 0.2)",
-        "hsla(180,100%,69%, 0.2)",
-      ],
-      borderColor: [
-        "hsla(0,100%,69%,1)",
-        "hsla(240,100%,69%,1)",
-        "hsla(120,100%,69%,1)",
-        "hsla(300,100%,69%,1)",
-        "hsla(60,100%,69%,1)",
-        "hsla(180,100%,69%,1)",
-      ],
-      borderWidth: 1,
-    },
-  ],
-};
 
 export function EquityChart({
   holding,
