@@ -1,17 +1,8 @@
-"use client";
-
-import { unboundBookStoreAbi } from "@/abi/UnboundBookStore";
 import { Subnav } from "@/app/_layout/Subnav";
 import { EquityChart } from "@/components/EquityChart";
-import {
-  SelectPaymentSettings,
-  useSelectPaymentModal,
-} from "@0xsequence/checkout";
 import Image from "next/image";
 import Link from "next/link";
-import { encodeFunctionData } from "viem";
-import { useAccount } from "wagmi";
-import { sign } from "./sign";
+import { BuyButton } from "./BuyButton";
 
 export default function Book() {
   const equity = {
@@ -20,49 +11,6 @@ export default function Book() {
     Translator: 10000,
     "Public Offering": 20000,
   };
-
-  const { address } = useAccount();
-  const { openSelectPaymentModal } = useSelectPaymentModal();
-
-  async function handleBuy(event: React.MouseEvent<HTMLButtonElement>) {
-    if (!address) return;
-    const selectPaymentModalSettings: SelectPaymentSettings = {
-      collectibles: [
-        {
-          tokenId: "1",
-          quantity: "1",
-        },
-      ],
-      chain: process.env.NODE_ENV === "production" ? 1868 : 1946,
-      price: "2000000",
-      targetContractAddress: process.env.NEXT_PUBLIC_STORE_ADDRESS as string,
-      recipientAddress: address,
-      currencyAddress: process.env.NEXT_PUBLIC_PAYMENT_TOKEN_ADDRESS as string,
-      collectionAddress: "0x612e765bED90D0af1C984863eed9c71F79557EeE",
-      copyrightText: "ⓒ2025 Unbound",
-      onSuccess: (txnHash: string) => {
-        console.log("success!", txnHash);
-      },
-      onError: (error: Error) => {
-        console.error(error);
-      },
-      txData: encodeFunctionData({
-        abi: unboundBookStoreAbi,
-        functionName: "purchase",
-        args: [
-          address,
-          {
-            id: 1n,
-            price: 2000000n,
-            before: 1900000000n,
-          },
-          await sign(),
-        ],
-      }),
-    };
-
-    openSelectPaymentModal(selectPaymentModalSettings);
-  }
 
   return (
     <>
@@ -185,12 +133,7 @@ export default function Book() {
                     Pellentesque habitant morbi tristique senectus et netus et
                     malesuada fames ac turpis egestas.
                   </p>
-                  <button
-                    className="mt-4 bg-gray-600 text-white rounded px-4 py-2 float-right cursor-pointer"
-                    onClick={handleBuy}
-                  >
-                    Buy - $2
-                  </button>
+                  <BuyButton />
                 </div>
               </div>
               <div
