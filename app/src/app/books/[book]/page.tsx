@@ -83,7 +83,7 @@ export default function Book() {
                     </li>
                   ))}
                 </ul>
-                <a
+                {/* <a
                   href={`https://verylongswap.xyz/swap?inputCurrency=${0}&outputCurrency=${0}&chain=soneium`}
                   referrerPolicy="strict-origin"
                   rel="noopener"
@@ -99,7 +99,7 @@ export default function Book() {
                   target="_blank"
                 >
                   ▶︎ Buy it on Sonex
-                </a>
+                </a> */}
               </div>
               <div className="max-w-96">
                 <EquityChart holding={equity} />
