@@ -3,7 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ContextProvider from "@/context";
 import { headers } from "next/headers";
-import { Nav } from "./_layout/Nav";
+import { Nav } from "../components/layout/Nav";
+import { AutoLogin } from "../components/layout/AutoLogin";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,6 +36,7 @@ export default async function RootLayout({
         <ContextProvider cookies={cookies}>
           <Nav />
           {children}
+          <AutoLogin />
         </ContextProvider>
       </body>
     </html>

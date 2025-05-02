@@ -16,7 +16,7 @@ datasource db {
 
 model User {
   id             String  @id @default(uuid()) @db.Uuid
-  address        String  @unique @db.Char(40) // The address of the user without 0x
+  address        String  @unique @db.Char(42)
   name           String
   avatar         String?
   bio            String?
@@ -36,7 +36,7 @@ model Book {
   Content Content[]
 
   equaity      String? // A JSON describes the book's equaity
-  tokenAddress String? @unique @db.Char(40) // The address of the equaity token without 0x
+  tokenAddress String? @unique @db.Char(42)
 
   author   User   @relation(fields: [authorId], references: [id])
   authorId String @db.Uuid
@@ -106,7 +106,7 @@ model Investment {
   id     String  @id @default(uuid()) @db.Uuid
   amount Decimal @db.Decimal(9, 2) // in USD, it can store up to 9,999,999.99 and it should be enough for a book
   equity Int
-  hash   String  @unique @db.Char(64) // The hash of the transaction without 0x
+  hash   String  @unique @db.Char(66)
 
   createdAt DateTime @default(now())
 }

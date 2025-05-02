@@ -1,4 +1,4 @@
-import { Subnav } from "@/app/_layout/Subnav";
+import { Subnav } from "@/components/layout/Subnav";
 import { EquityChart } from "@/components/EquityChart";
 import Image from "next/image";
 import Link from "next/link";
