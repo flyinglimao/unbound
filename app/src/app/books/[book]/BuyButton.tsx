@@ -8,7 +8,7 @@ import { useAppKit, useAppKitAccount } from "@reown/appkit/react";
 import { encodeFunctionData } from "viem";
 import { sign } from "./sign";
 
-export function BuyButton() {
+export function BuyButton({ price }: { price: number }) {
   const { address } = useAppKitAccount();
   const { open } = useAppKit();
   const { openSelectPaymentModal } = useSelectPaymentModal();
@@ -55,10 +55,10 @@ export function BuyButton() {
 
   return (
     <button
-      className="mt-4 bg-gray-600 text-white rounded px-4 py-2 float-right cursor-pointer"
+      className="mt-4 bg-gray-600 text-white rounded px-4 py-2 cursor-pointer"
       onClick={handleBuy}
     >
-      Buy - $2
+      Buy - ${price.toLocaleString()}
     </button>
   );
 }
