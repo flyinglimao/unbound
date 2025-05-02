@@ -147,7 +147,7 @@ export function Carousel({ items: items_ }: { items: CarouselItem[] }) {
               <Image
                 src={item.item.image}
                 alt={item.item.target}
-                className="object-cover"
+                className="object-cover object-center"
                 draggable={false}
                 width={1120}
                 height={320}
