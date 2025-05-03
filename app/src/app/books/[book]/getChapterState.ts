@@ -9,6 +9,7 @@ import {
 } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 import { checkOwned } from "./checkOwned";
+import { notFound } from "next/navigation";
 
 type NotOwned = {
   owned: false;
@@ -38,7 +39,7 @@ export async function getChapterState({
     },
   });
   if (!chapter) {
-    throw new Error("Chapter not found");
+    return notFound();
   }
   if (chapter.tokenId === null) {
     throw new Error("Chapter does not have a tokenId");

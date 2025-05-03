@@ -47,7 +47,7 @@ export function Nav() {
               <BsSearch />
             </button>
           </Form>
-          <MyPage className="text-sm" />
+          {/* <MyPage className="text-sm" /> */}
           <appkit-button label="Log in" balance="hide" />
         </div>
         <div className="flex lg:hidden">
@@ -78,7 +78,7 @@ export function Nav() {
                 <BsSearch />
               </button>
             </Form>
-            <MyPage />
+            {/* <MyPage /> */}
             <Link href="/books">Books</Link>
             <Link href="/about">About</Link>
             <Link href="/faq">FAQ</Link>

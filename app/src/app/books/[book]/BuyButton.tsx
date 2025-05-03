@@ -39,8 +39,8 @@ export function BuyButton({
       currencyAddress: process.env.NEXT_PUBLIC_PAYMENT_TOKEN_ADDRESS as string,
       collectionAddress: "0x612e765bED90D0af1C984863eed9c71F79557EeE",
       copyrightText: "ⓒ2025 Unbound",
-      onSuccess: (txnHash: string) => {
-        console.log("success!", txnHash);
+      onSuccess: () => {
+        location.reload();
       },
       onError: (error: Error) => {
         console.error(error);
