@@ -3,7 +3,6 @@ import { EquityChart } from "@/components/EquityChart";
 import { Subnav } from "@/components/layout/Subnav";
 import { prisma } from "@/lib/prisma";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ActionButton } from "./ActionButton";
 

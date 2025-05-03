@@ -1,10 +1,10 @@
+import ContextProvider from "@/context";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import ContextProvider from "@/context";
-import { cookies, headers } from "next/headers";
-import { Nav } from "../components/layout/Nav";
+import { cookies } from "next/headers";
 import { AutoLogin } from "../components/layout/AutoLogin";
+import { Nav } from "../components/layout/Nav";
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

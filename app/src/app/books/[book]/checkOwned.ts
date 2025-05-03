@@ -11,9 +11,6 @@ export async function checkOwned(tokenId: bigint): Promise<boolean> {
     return false;
   }
 
-  console.log("address", address);
-  console.log("tokenId", tokenId);
-
   const data = await publicClient.readContract({
     abi: erc1155Abi,
     address: process.env.NEXT_PUBLIC_BOOK_ADDRESS as `0x${string}`,

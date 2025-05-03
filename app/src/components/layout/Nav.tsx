@@ -1,8 +1,7 @@
+import Form from "next/form";
 import Image from "next/image";
 import Link from "next/link";
-import { MyPage } from "./MyPage";
-import Form from "next/form";
-import { BsThreeDotsVertical, BsSearch } from "react-icons/bs";
+import { BsSearch, BsThreeDotsVertical } from "react-icons/bs";
 
 export function Nav() {
   return (

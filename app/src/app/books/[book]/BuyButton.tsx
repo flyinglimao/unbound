@@ -23,7 +23,7 @@ export function BuyButton({
   const { open } = useAppKit();
   const { openSelectPaymentModal } = useSelectPaymentModal();
 
-  async function handleBuy(event: React.MouseEvent<HTMLButtonElement>) {
+  async function handleBuy() {
     if (!address) return open();
     const selectPaymentModalSettings: SelectPaymentSettings = {
       collectibles: [

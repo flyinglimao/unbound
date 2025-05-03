@@ -3,17 +3,12 @@
 import { login } from "@/action/login";
 import { logout } from "@/action/logout";
 import { siwx } from "@/context/wagmi";
-import {
-  useAppKitAccount,
-  useAppKitNetwork,
-  useDisconnect,
-} from "@reown/appkit/react";
+import { useAppKitAccount, useAppKitNetwork } from "@reown/appkit/react";
 import { useEffect } from "react";
 
 export function AutoLogin() {
   const { caipNetworkId } = useAppKitNetwork();
   const { address } = useAppKitAccount();
-  const { disconnect } = useDisconnect();
 
   useEffect(() => {
     if (caipNetworkId && address) {
