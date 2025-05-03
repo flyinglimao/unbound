@@ -1,68 +1,38 @@
+import { prisma } from "@/lib/prisma";
 import Image from "next/image";
 import Link from "next/link";
 import { BsThreeDots } from "react-icons/bs";
 
-export default function Books() {
+export default async function Books() {
+  const language = "en";
+  const books = await prisma.book.findMany({
+    include: {
+      Content: {
+        where: { language },
+        select: { cover: true, title: true },
+      },
+    },
+  });
+
   return (
     <div className="max-w-7xl m-auto w-full mt-4 flex flex-col gap-4 px-4">
       <div>
         <div className="flex gap-8 overflow-auto py-2">
           {/* Search result */}
-          <Link
-            className="shadow hover:scale-105 transition-transform min-w-48"
-            href="/books/test"
-          >
-            <Image
-              src="https://placehold.co/210x297/000000/FFFFFF/png"
-              alt="test"
-              width={210}
-              height={297}
-            />
-          </Link>
-          <Link
-            className="shadow hover:scale-105 transition-transform min-w-48"
-            href="/books/test"
-          >
-            <Image
-              src="https://placehold.co/210x297/000000/FFFFFF/png"
-              alt="test"
-              width={210}
-              height={297}
-            />
-          </Link>
-          <Link
-            className="shadow hover:scale-105 transition-transform min-w-48"
-            href="/books/test"
-          >
-            <Image
-              src="https://placehold.co/210x297/000000/FFFFFF/png"
-              alt="test"
-              width={210}
-              height={297}
-            />
-          </Link>
-          <Link
-            className="shadow hover:scale-105 transition-transform min-w-48"
-            href="/books/test"
-          >
-            <Image
-              src="https://placehold.co/210x297/000000/FFFFFF/png"
-              alt="test"
-              width={210}
-              height={297}
-            />
-          </Link>
-          <Link
-            className="shadow hover:scale-105 transition-transform min-w-48"
-            href="/books/test"
-          >
-            <Image
-              src="https://placehold.co/210x297/000000/FFFFFF/png"
-              alt="test"
-              width={210}
-              height={297}
-            />
-          </Link>
+          {books.map((book) => (
+            <Link
+              className="shadow hover:scale-105 transition-transform min-w-48"
+              href={`/books/${book.slug}`}
+              key={`search-${book.slug}`}
+            >
+              <Image
+                src={book.Content[0].cover!}
+                alt={book.Content[0].title}
+                width={210}
+                height={297}
+              />
+            </Link>
+          ))}
         </div>
       </div>
       {/* Additional recommends */}
@@ -74,61 +44,20 @@ export default function Books() {
           </Link>
         </h2>
         <div className="flex gap-8 overflow-auto py-2">
-          <Link
-            className="shadow hover:scale-105 transition-transform min-w-48"
-            href="/books/test"
-          >
-            <Image
-              src="https://placehold.co/210x297/000000/FFFFFF/png"
-              alt="test"
-              width={210}
-              height={297}
-            />
-          </Link>
-          <Link
-            className="shadow hover:scale-105 transition-transform min-w-48"
-            href="/books/test"
-          >
-            <Image
-              src="https://placehold.co/210x297/000000/FFFFFF/png"
-              alt="test"
-              width={210}
-              height={297}
-            />
-          </Link>
-          <Link
-            className="shadow hover:scale-105 transition-transform min-w-48"
-            href="/books/test"
-          >
-            <Image
-              src="https://placehold.co/210x297/000000/FFFFFF/png"
-              alt="test"
-              width={210}
-              height={297}
-            />
-          </Link>
-          <Link
-            className="shadow hover:scale-105 transition-transform min-w-48"
-            href="/books/test"
-          >
-            <Image
-              src="https://placehold.co/210x297/000000/FFFFFF/png"
-              alt="test"
-              width={210}
-              height={297}
-            />
-          </Link>
-          <Link
-            className="shadow hover:scale-105 transition-transform min-w-48"
-            href="/books/test"
-          >
-            <Image
-              src="https://placehold.co/210x297/000000/FFFFFF/png"
-              alt="test"
-              width={210}
-              height={297}
-            />
-          </Link>
+          {books.map((book) => (
+            <Link
+              className="shadow hover:scale-105 transition-transform min-w-48"
+              href={`/books/${book.slug}`}
+              key={`new-${book.slug}`}
+            >
+              <Image
+                src={book.Content[0].cover!}
+                alt={book.Content[0].title}
+                width={210}
+                height={297}
+              />
+            </Link>
+          ))}
         </div>
       </div>
       <div>
@@ -139,61 +68,20 @@ export default function Books() {
           </Link>
         </h2>
         <div className="flex gap-8 overflow-auto py-2">
-          <Link
-            className="shadow hover:scale-105 transition-transform min-w-48"
-            href="/books/test"
-          >
-            <Image
-              src="https://placehold.co/210x297/000000/FFFFFF/png"
-              alt="test"
-              width={210}
-              height={297}
-            />
-          </Link>
-          <Link
-            className="shadow hover:scale-105 transition-transform min-w-48"
-            href="/books/test"
-          >
-            <Image
-              src="https://placehold.co/210x297/000000/FFFFFF/png"
-              alt="test"
-              width={210}
-              height={297}
-            />
-          </Link>
-          <Link
-            className="shadow hover:scale-105 transition-transform min-w-48"
-            href="/books/test"
-          >
-            <Image
-              src="https://placehold.co/210x297/000000/FFFFFF/png"
-              alt="test"
-              width={210}
-              height={297}
-            />
-          </Link>
-          <Link
-            className="shadow hover:scale-105 transition-transform min-w-48"
-            href="/books/test"
-          >
-            <Image
-              src="https://placehold.co/210x297/000000/FFFFFF/png"
-              alt="test"
-              width={210}
-              height={297}
-            />
-          </Link>
-          <Link
-            className="shadow hover:scale-105 transition-transform min-w-48"
-            href="/books/test"
-          >
-            <Image
-              src="https://placehold.co/210x297/000000/FFFFFF/png"
-              alt="test"
-              width={210}
-              height={297}
-            />
-          </Link>
+          {books.map((book) => (
+            <Link
+              className="shadow hover:scale-105 transition-transform min-w-48"
+              href={`/books/${book.slug}`}
+              key={`area-trending-${book.slug}`}
+            >
+              <Image
+                src={book.Content[0].cover!}
+                alt={book.Content[0].title}
+                width={210}
+                height={297}
+              />
+            </Link>
+          ))}
         </div>
       </div>
       <div>
@@ -204,61 +92,20 @@ export default function Books() {
           </Link>
         </h2>
         <div className="flex gap-8 overflow-auto py-2">
-          <Link
-            className="shadow hover:scale-105 transition-transform min-w-48"
-            href="/books/test"
-          >
-            <Image
-              src="https://placehold.co/210x297/000000/FFFFFF/png"
-              alt="test"
-              width={210}
-              height={297}
-            />
-          </Link>
-          <Link
-            className="shadow hover:scale-105 transition-transform min-w-48"
-            href="/books/test"
-          >
-            <Image
-              src="https://placehold.co/210x297/000000/FFFFFF/png"
-              alt="test"
-              width={210}
-              height={297}
-            />
-          </Link>
-          <Link
-            className="shadow hover:scale-105 transition-transform min-w-48"
-            href="/books/test"
-          >
-            <Image
-              src="https://placehold.co/210x297/000000/FFFFFF/png"
-              alt="test"
-              width={210}
-              height={297}
-            />
-          </Link>
-          <Link
-            className="shadow hover:scale-105 transition-transform min-w-48"
-            href="/books/test"
-          >
-            <Image
-              src="https://placehold.co/210x297/000000/FFFFFF/png"
-              alt="test"
-              width={210}
-              height={297}
-            />
-          </Link>
-          <Link
-            className="shadow hover:scale-105 transition-transform min-w-48"
-            href="/books/test"
-          >
-            <Image
-              src="https://placehold.co/210x297/000000/FFFFFF/png"
-              alt="test"
-              width={210}
-              height={297}
-            />
-          </Link>
+          {books.map((book) => (
+            <Link
+              className="shadow hover:scale-105 transition-transform min-w-48"
+              href={`/books/${book.slug}`}
+              key={`world-trending-${book.slug}`}
+            >
+              <Image
+                src={book.Content[0].cover!}
+                alt={book.Content[0].title}
+                width={210}
+                height={297}
+              />
+            </Link>
+          ))}
         </div>
       </div>
     </div>
