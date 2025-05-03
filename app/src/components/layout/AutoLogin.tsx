@@ -1,10 +1,10 @@
 "use client";
 
 import { login } from "@/action/login";
+import { logout } from "@/action/logout";
 import { siwx } from "@/context/wagmi";
 import {
   useAppKitAccount,
-  useAppKitEvents,
   useAppKitNetwork,
   useDisconnect,
 } from "@reown/appkit/react";
@@ -18,11 +18,12 @@ export function AutoLogin() {
   useEffect(() => {
     if (caipNetworkId && address) {
       siwx.getSessions(caipNetworkId, address).then((sessions) => {
-        if (sessions.length === 0) disconnect();
-
-        login(sessions[0].message, sessions[0].signature as `0x${string}`).then(
-          console.log
-        );
+        if (sessions.length === 0) logout();
+        else
+          login(
+            sessions[0].message,
+            sessions[0].signature as `0x${string}`
+          ).then(console.log);
       });
     }
   }, [caipNetworkId, address]);

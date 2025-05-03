@@ -44,7 +44,6 @@ export async function getChapterState({
   if (chapter.tokenId === null) {
     throw new Error("Chapter does not have a tokenId");
   }
-  console.log(chapter.tokenId);
   const owned = await checkOwned(BigInt(chapter.tokenId));
   if (owned) return { owned: true };
 

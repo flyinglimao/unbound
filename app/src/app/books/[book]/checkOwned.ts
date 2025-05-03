@@ -6,12 +6,17 @@ import { erc1155Abi } from "viem";
 
 export async function checkOwned(tokenId: bigint): Promise<boolean> {
   const address = await getAddress().catch(() => false);
+
   if (!address) {
     return false;
   }
+
+  console.log("address", address);
+  console.log("tokenId", tokenId);
+
   const data = await publicClient.readContract({
     abi: erc1155Abi,
-    address: process.env.NEXT_PUBLIC_STORE_ADDRESS as `0x${string}`,
+    address: process.env.NEXT_PUBLIC_BOOK_ADDRESS as `0x${string}`,
     functionName: "balanceOf",
     args: [address as `0x${string}`, tokenId],
   });
