@@ -5,10 +5,20 @@ import {
   useSelectPaymentModal,
 } from "@0xsequence/checkout";
 import { useAppKit, useAppKitAccount } from "@reown/appkit/react";
-import { encodeFunctionData } from "viem";
-import { sign } from "./sign";
+import { encodeFunctionData, parseUnits } from "viem";
 
-export function BuyButton({ price }: { price: number }) {
+export function BuyButton({
+  tokenId,
+  signature,
+  before,
+  price,
+}: {
+  price: number;
+  signature: `0x${string}`;
+  tokenId: number;
+  before: number;
+}) {
+  const argPrice = parseUnits(price.toString(), 6);
   const { address } = useAppKitAccount();
   const { open } = useAppKit();
   const { openSelectPaymentModal } = useSelectPaymentModal();
@@ -18,12 +28,12 @@ export function BuyButton({ price }: { price: number }) {
     const selectPaymentModalSettings: SelectPaymentSettings = {
       collectibles: [
         {
-          tokenId: "1",
+          tokenId: tokenId.toString(),
           quantity: "1",
         },
       ],
-      chain: process.env.NODE_ENV === "production" ? 1868 : 1946,
-      price: "2000000",
+      chain: process.env.NEXT_PUBLIC_NETWORK === "soneium" ? 1868 : 1946,
+      price: argPrice.toString(),
       targetContractAddress: process.env.NEXT_PUBLIC_STORE_ADDRESS as string,
       recipientAddress: address,
       currencyAddress: process.env.NEXT_PUBLIC_PAYMENT_TOKEN_ADDRESS as string,
@@ -41,11 +51,11 @@ export function BuyButton({ price }: { price: number }) {
         args: [
           address as `0x${string}`,
           {
-            id: 1n,
-            price: 2000000n,
-            before: 1900000000n,
+            id: BigInt(tokenId),
+            price: argPrice,
+            before: BigInt(before),
           },
-          await sign(),
+          signature,
         ],
       }),
     };
@@ -61,7 +71,4 @@ export function BuyButton({ price }: { price: number }) {
       Buy - ${price.toLocaleString()}
     </button>
   );
-}
-function useAppKitWallet(): { isReady: any; isPending: any; connect: any } {
-  throw new Error("Function not implemented.");
 }

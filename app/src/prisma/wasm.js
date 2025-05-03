@@ -142,6 +142,7 @@ exports.Prisma.BookScalarFieldEnum = {
 
 exports.Prisma.ChapterScalarFieldEnum = {
   id: 'id',
+  tokenId: 'tokenId',
   slug: 'slug',
   price: 'price',
   bookId: 'bookId',

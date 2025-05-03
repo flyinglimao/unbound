@@ -5,6 +5,7 @@ import { prisma } from "@/lib/prisma";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ActionButton } from "./ActionButton";
 
 export default async function Book({
   params: params_,
@@ -149,13 +150,10 @@ export default async function Book({
                       {chapter.Content[0].description}
                     </p>
                     <div className="text-right">
-                      {/* <BuyButton price={chapter.price.toNumber()} /> */}
-                      <Link
-                        href={`/books/${params.book}/${chapter.slug}`}
-                        className="mt-4 bg-gray-600 text-white rounded px-4 py-2 float-right"
-                      >
-                        Read
-                      </Link>
+                      <ActionButton
+                        bookSlug={params.book}
+                        chapterSlug={chapter.slug}
+                      />
                     </div>
                   </div>
                 </div>

@@ -3856,15 +3856,18 @@ export namespace Prisma {
   }
 
   export type ChapterAvgAggregateOutputType = {
+    tokenId: number | null
     price: Decimal | null
   }
 
   export type ChapterSumAggregateOutputType = {
+    tokenId: number | null
     price: Decimal | null
   }
 
   export type ChapterMinAggregateOutputType = {
     id: string | null
+    tokenId: number | null
     slug: string | null
     price: Decimal | null
     bookId: string | null
@@ -3874,6 +3877,7 @@ export namespace Prisma {
 
   export type ChapterMaxAggregateOutputType = {
     id: string | null
+    tokenId: number | null
     slug: string | null
     price: Decimal | null
     bookId: string | null
@@ -3883,6 +3887,7 @@ export namespace Prisma {
 
   export type ChapterCountAggregateOutputType = {
     id: number
+    tokenId: number
     slug: number
     price: number
     bookId: number
@@ -3893,15 +3898,18 @@ export namespace Prisma {
 
 
   export type ChapterAvgAggregateInputType = {
+    tokenId?: true
     price?: true
   }
 
   export type ChapterSumAggregateInputType = {
+    tokenId?: true
     price?: true
   }
 
   export type ChapterMinAggregateInputType = {
     id?: true
+    tokenId?: true
     slug?: true
     price?: true
     bookId?: true
@@ -3911,6 +3919,7 @@ export namespace Prisma {
 
   export type ChapterMaxAggregateInputType = {
     id?: true
+    tokenId?: true
     slug?: true
     price?: true
     bookId?: true
@@ -3920,6 +3929,7 @@ export namespace Prisma {
 
   export type ChapterCountAggregateInputType = {
     id?: true
+    tokenId?: true
     slug?: true
     price?: true
     bookId?: true
@@ -4016,6 +4026,7 @@ export namespace Prisma {
 
   export type ChapterGroupByOutputType = {
     id: string
+    tokenId: number | null
     slug: string
     price: Decimal
     bookId: string
@@ -4044,6 +4055,7 @@ export namespace Prisma {
 
   export type ChapterSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    tokenId?: boolean
     slug?: boolean
     price?: boolean
     bookId?: boolean
@@ -4056,6 +4068,7 @@ export namespace Prisma {
 
   export type ChapterSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    tokenId?: boolean
     slug?: boolean
     price?: boolean
     bookId?: boolean
@@ -4066,6 +4079,7 @@ export namespace Prisma {
 
   export type ChapterSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    tokenId?: boolean
     slug?: boolean
     price?: boolean
     bookId?: boolean
@@ -4076,6 +4090,7 @@ export namespace Prisma {
 
   export type ChapterSelectScalar = {
     id?: boolean
+    tokenId?: boolean
     slug?: boolean
     price?: boolean
     bookId?: boolean
@@ -4083,7 +4098,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type ChapterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "slug" | "price" | "bookId" | "createdAt" | "updatedAt", ExtArgs["result"]["chapter"]>
+  export type ChapterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tokenId" | "slug" | "price" | "bookId" | "createdAt" | "updatedAt", ExtArgs["result"]["chapter"]>
   export type ChapterInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Content?: boolean | Chapter$ContentArgs<ExtArgs>
     book?: boolean | BookDefaultArgs<ExtArgs>
@@ -4104,6 +4119,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      tokenId: number | null
       slug: string
       price: Prisma.Decimal
       bookId: string
@@ -4535,6 +4551,7 @@ export namespace Prisma {
    */
   interface ChapterFieldRefs {
     readonly id: FieldRef<"Chapter", 'String'>
+    readonly tokenId: FieldRef<"Chapter", 'Int'>
     readonly slug: FieldRef<"Chapter", 'String'>
     readonly price: FieldRef<"Chapter", 'Decimal'>
     readonly bookId: FieldRef<"Chapter", 'String'>
@@ -8386,6 +8403,7 @@ export namespace Prisma {
 
   export const ChapterScalarFieldEnum: {
     id: 'id',
+    tokenId: 'tokenId',
     slug: 'slug',
     price: 'price',
     bookId: 'bookId',
@@ -8494,20 +8512,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Decimal'
-   */
-  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
-    
-
-
-  /**
-   * Reference to a field of type 'Decimal[]'
-   */
-  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -8518,6 +8522,20 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Decimal'
+   */
+  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+  /**
+   * Reference to a field of type 'Decimal[]'
+   */
+  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
     
 
 
@@ -8703,6 +8721,7 @@ export namespace Prisma {
     OR?: ChapterWhereInput[]
     NOT?: ChapterWhereInput | ChapterWhereInput[]
     id?: UuidFilter<"Chapter"> | string
+    tokenId?: IntNullableFilter<"Chapter"> | number | null
     slug?: StringFilter<"Chapter"> | string
     price?: DecimalFilter<"Chapter"> | Decimal | DecimalJsLike | number | string
     bookId?: UuidFilter<"Chapter"> | string
@@ -8714,6 +8733,7 @@ export namespace Prisma {
 
   export type ChapterOrderByWithRelationInput = {
     id?: SortOrder
+    tokenId?: SortOrderInput | SortOrder
     slug?: SortOrder
     price?: SortOrder
     bookId?: SortOrder
@@ -8729,6 +8749,7 @@ export namespace Prisma {
     AND?: ChapterWhereInput | ChapterWhereInput[]
     OR?: ChapterWhereInput[]
     NOT?: ChapterWhereInput | ChapterWhereInput[]
+    tokenId?: IntNullableFilter<"Chapter"> | number | null
     slug?: StringFilter<"Chapter"> | string
     price?: DecimalFilter<"Chapter"> | Decimal | DecimalJsLike | number | string
     bookId?: UuidFilter<"Chapter"> | string
@@ -8740,6 +8761,7 @@ export namespace Prisma {
 
   export type ChapterOrderByWithAggregationInput = {
     id?: SortOrder
+    tokenId?: SortOrderInput | SortOrder
     slug?: SortOrder
     price?: SortOrder
     bookId?: SortOrder
@@ -8757,6 +8779,7 @@ export namespace Prisma {
     OR?: ChapterScalarWhereWithAggregatesInput[]
     NOT?: ChapterScalarWhereWithAggregatesInput | ChapterScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"Chapter"> | string
+    tokenId?: IntNullableWithAggregatesFilter<"Chapter"> | number | null
     slug?: StringWithAggregatesFilter<"Chapter"> | string
     price?: DecimalWithAggregatesFilter<"Chapter"> | Decimal | DecimalJsLike | number | string
     bookId?: UuidWithAggregatesFilter<"Chapter"> | string
@@ -9155,6 +9178,7 @@ export namespace Prisma {
 
   export type ChapterCreateInput = {
     id?: string
+    tokenId?: number | null
     slug: string
     price: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
@@ -9165,6 +9189,7 @@ export namespace Prisma {
 
   export type ChapterUncheckedCreateInput = {
     id?: string
+    tokenId?: number | null
     slug: string
     price: Decimal | DecimalJsLike | number | string
     bookId: string
@@ -9175,6 +9200,7 @@ export namespace Prisma {
 
   export type ChapterUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    tokenId?: NullableIntFieldUpdateOperationsInput | number | null
     slug?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9185,6 +9211,7 @@ export namespace Prisma {
 
   export type ChapterUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    tokenId?: NullableIntFieldUpdateOperationsInput | number | null
     slug?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     bookId?: StringFieldUpdateOperationsInput | string
@@ -9195,6 +9222,7 @@ export namespace Prisma {
 
   export type ChapterCreateManyInput = {
     id?: string
+    tokenId?: number | null
     slug: string
     price: Decimal | DecimalJsLike | number | string
     bookId: string
@@ -9204,6 +9232,7 @@ export namespace Prisma {
 
   export type ChapterUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    tokenId?: NullableIntFieldUpdateOperationsInput | number | null
     slug?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9212,6 +9241,7 @@ export namespace Prisma {
 
   export type ChapterUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    tokenId?: NullableIntFieldUpdateOperationsInput | number | null
     slug?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     bookId?: StringFieldUpdateOperationsInput | string
@@ -9710,6 +9740,17 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type DecimalFilter<$PrismaModel = never> = {
     equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
@@ -9733,6 +9774,7 @@ export namespace Prisma {
 
   export type ChapterCountOrderByAggregateInput = {
     id?: SortOrder
+    tokenId?: SortOrder
     slug?: SortOrder
     price?: SortOrder
     bookId?: SortOrder
@@ -9741,11 +9783,13 @@ export namespace Prisma {
   }
 
   export type ChapterAvgOrderByAggregateInput = {
+    tokenId?: SortOrder
     price?: SortOrder
   }
 
   export type ChapterMaxOrderByAggregateInput = {
     id?: SortOrder
+    tokenId?: SortOrder
     slug?: SortOrder
     price?: SortOrder
     bookId?: SortOrder
@@ -9755,6 +9799,7 @@ export namespace Prisma {
 
   export type ChapterMinOrderByAggregateInput = {
     id?: SortOrder
+    tokenId?: SortOrder
     slug?: SortOrder
     price?: SortOrder
     bookId?: SortOrder
@@ -9763,7 +9808,24 @@ export namespace Prisma {
   }
 
   export type ChapterSumOrderByAggregateInput = {
+    tokenId?: SortOrder
     price?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
@@ -10200,6 +10262,14 @@ export namespace Prisma {
     connect?: ContentWhereUniqueInput | ContentWhereUniqueInput[]
   }
 
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type DecimalFieldUpdateOperationsInput = {
     set?: Decimal | DecimalJsLike | number | string
     increment?: Decimal | DecimalJsLike | number | string
@@ -10550,6 +10620,33 @@ export namespace Prisma {
     not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
   }
 
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
@@ -10791,6 +10888,7 @@ export namespace Prisma {
 
   export type ChapterCreateWithoutBookInput = {
     id?: string
+    tokenId?: number | null
     slug: string
     price: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
@@ -10800,6 +10898,7 @@ export namespace Prisma {
 
   export type ChapterUncheckedCreateWithoutBookInput = {
     id?: string
+    tokenId?: number | null
     slug: string
     price: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
@@ -10983,6 +11082,7 @@ export namespace Prisma {
     OR?: ChapterScalarWhereInput[]
     NOT?: ChapterScalarWhereInput | ChapterScalarWhereInput[]
     id?: UuidFilter<"Chapter"> | string
+    tokenId?: IntNullableFilter<"Chapter"> | number | null
     slug?: StringFilter<"Chapter"> | string
     price?: DecimalFilter<"Chapter"> | Decimal | DecimalJsLike | number | string
     bookId?: UuidFilter<"Chapter"> | string
@@ -11155,6 +11255,7 @@ export namespace Prisma {
 
   export type ChapterCreateWithoutContentInput = {
     id?: string
+    tokenId?: number | null
     slug: string
     price: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
@@ -11164,6 +11265,7 @@ export namespace Prisma {
 
   export type ChapterUncheckedCreateWithoutContentInput = {
     id?: string
+    tokenId?: number | null
     slug: string
     price: Decimal | DecimalJsLike | number | string
     bookId: string
@@ -11222,6 +11324,7 @@ export namespace Prisma {
 
   export type ChapterUpdateWithoutContentInput = {
     id?: StringFieldUpdateOperationsInput | string
+    tokenId?: NullableIntFieldUpdateOperationsInput | number | null
     slug?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11231,6 +11334,7 @@ export namespace Prisma {
 
   export type ChapterUncheckedUpdateWithoutContentInput = {
     id?: StringFieldUpdateOperationsInput | string
+    tokenId?: NullableIntFieldUpdateOperationsInput | number | null
     slug?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     bookId?: StringFieldUpdateOperationsInput | string
@@ -11501,6 +11605,7 @@ export namespace Prisma {
 
   export type ChapterCreateManyBookInput = {
     id?: string
+    tokenId?: number | null
     slug: string
     price: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
@@ -11615,6 +11720,7 @@ export namespace Prisma {
 
   export type ChapterUpdateWithoutBookInput = {
     id?: StringFieldUpdateOperationsInput | string
+    tokenId?: NullableIntFieldUpdateOperationsInput | number | null
     slug?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11624,6 +11730,7 @@ export namespace Prisma {
 
   export type ChapterUncheckedUpdateWithoutBookInput = {
     id?: StringFieldUpdateOperationsInput | string
+    tokenId?: NullableIntFieldUpdateOperationsInput | number | null
     slug?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11633,6 +11740,7 @@ export namespace Prisma {
 
   export type ChapterUncheckedUpdateManyWithoutBookInput = {
     id?: StringFieldUpdateOperationsInput | string
+    tokenId?: NullableIntFieldUpdateOperationsInput | number | null
     slug?: StringFieldUpdateOperationsInput | string
     price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
