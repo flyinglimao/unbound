@@ -16,8 +16,8 @@ export async function login(message: string, signature: `0x${string}`) {
   } catch {
     return false;
   }
-  cookie.set("message", message, { httpOnly: true });
-  cookie.set("signature", signature, { httpOnly: true });
+  cookie.set("message", message, { httpOnly: true, secure: true });
+  cookie.set("signature", signature, { httpOnly: true, secure: true });
 
   const user = await prisma.user.findFirst({
     where: {
