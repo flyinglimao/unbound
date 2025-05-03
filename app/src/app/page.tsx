@@ -9,6 +9,10 @@ export default function Home() {
       target: "/books/taketorimonobatari",
       image: "/taketorimonobatari-promo.jpg",
     },
+    {
+      target: "/books/sanguoyanyi",
+      image: "/sanguoyanyi-promo.png",
+    },
   ];
 
   return (
