@@ -1,16 +1,17 @@
+import { getLocale } from "@/action/locale/getLocale";
 import { prisma } from "@/lib/prisma";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Fragment } from "react";
 import { BsChevronLeft } from "react-icons/bs";
 
 export default async function Volume({
-  params,
+  params: params_,
 }: {
-  params: { book: string; volume: string };
+  params: Promise<{ book: string; volume: string }>;
 }) {
-  const language = "en";
+  const params = await params_;
+  const language = await getLocale();
   const volume = await prisma.chapter.findFirst({
     where: { slug: params.volume, book: { slug: params.book } },
     include: {

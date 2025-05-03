@@ -1,10 +1,12 @@
+import { getLocale } from "@/action/locale/getLocale";
 import { prisma } from "@/lib/prisma";
 import Image from "next/image";
 import Link from "next/link";
 import { BsThreeDots } from "react-icons/bs";
 
 export default async function Books() {
-  const language = "en";
+  const language = await getLocale();
+
   const books = await prisma.book.findMany({
     include: {
       Content: {

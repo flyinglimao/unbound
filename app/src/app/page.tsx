@@ -1,3 +1,4 @@
+import { getLocale } from "@/action/locale/getLocale";
 import { Carousel } from "@/components/Carousel";
 import { prisma } from "@/lib/prisma";
 import Image from "next/image";
@@ -5,10 +6,10 @@ import Link from "next/link";
 import { BsThreeDots } from "react-icons/bs";
 
 export default async function Home() {
-  const language = "en";
+  const language = await getLocale();
   const items = [
     {
-      target: "/books/taketorimonobatari",
+      target: "/books/taketorimonogatari",
       image: "/taketorimonobatari-promo.jpg",
     },
     {

@@ -1,13 +1,18 @@
-import { Subnav } from "@/components/layout/Subnav";
+import { getLocale } from "@/action/locale/getLocale";
 import { EquityChart } from "@/components/EquityChart";
+import { Subnav } from "@/components/layout/Subnav";
+import { prisma } from "@/lib/prisma";
 import Image from "next/image";
 import Link from "next/link";
-import { BuyButton } from "./BuyButton";
-import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 
-export default async function Book({ params }: { params: { book: string } }) {
-  const language = "en";
+export default async function Book({
+  params: params_,
+}: {
+  params: Promise<{ book: string }>;
+}) {
+  const params = await params_;
+  const language = await getLocale();
   const book = await prisma.book.findFirst({
     where: { slug: params.book },
     include: {

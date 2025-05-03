@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ContextProvider from "@/context";
-import { headers } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { Nav } from "../components/layout/Nav";
 import { AutoLogin } from "../components/layout/AutoLogin";
 
@@ -26,14 +26,14 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookies = (await headers()).get("cookie");
+  const wagmiCookies = (await cookies()).get("wagmi.store")?.value || "";
 
   return (
     <html className="lg:scroll-p-20 scroll-p-2">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ContextProvider cookies={cookies}>
+        <ContextProvider cookies={wagmiCookies}>
           <Nav />
           {children}
           <AutoLogin />
